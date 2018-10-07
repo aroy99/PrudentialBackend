@@ -30,9 +30,7 @@ function getStreet(req, res) {
     if (err) {
 
       return res.json({
-        speech: 'Something went wrong!',
-        displayText: 'Something went wrong!',
-        source: 'account'
+        fulfillmentText: 'Something went wrong!'
       });
     }else{
       console.log("Found person at " + JSON.stringify(acctExists));
@@ -43,16 +41,12 @@ function getStreet(req, res) {
       console.log("Found person at " + acctExists.lastName);
 
       return res.json({
-        speech: acctExists.street,
-        displayText: acctExists.street,
-        source: 'account'
+        fulfillmentText: "Sure! Your address is "+acctExists.street+". Anything else I can help with?"
       });
     }
     else {
       return res.json({
-        speech: 'Currently I don\'t have information about this account',
-        displayText: 'Currently I don\'t have information about this account',
-        source: 'account'
+        fulfillmentText: "Currently I don't have information about this account"
       });
     }
   });
