@@ -6,20 +6,25 @@ var Account = require('./../Models/Account')
 exports.processRequest = function (req, res) {
   
   console.log("In function processRequest")
-  console.log("%s", JSON.stringify(req.body))
+  // console.log("%s", JSON.stringify(req.body))
   // console.log("%s", JSON.stringify(req.body["intent]"))
   if (req.body.queryResult.action == "GetAddress") {
-    console.log("%s", req.body.intent)
     console.log("%s",   req.body.queryResult.queryText);
     getStreet(req, res);
   }
 };
 
 function getStreet(req, res) {
-  let acctToSearch = req.body.outputContexts && req.body.outputContexts.parameters && req.body.outputContexts.parameters.lastName ? req.body.outputContexts.parameters.lastName : 'Unknown';
-  console.log(acctToSearch);
-  // var test = Account.findOne({ lastName: "Mann" });
-  // console.log("Test: " + test.street);
+  let acctToSearch = req.body.queryResult && 
+                     req.body.queryResult.outputContexts && 
+                     req.body.queryResult.outputContexts[0].parameters && 
+                     req.body.queryResult.outputContexts[0].parameters.lastName ? req.body.queryResult.outputContexts[0].parameters.lastName : 'Unknown';
+  
+  
+  
+  console.log("Last name: " + acctToSearch);
+  console.log("Parameters: " + req.body.queryResult.outputContexts[0].parameters.lastName);
+  console.log("Query Result: " + JSON.stringify(req.body.queryResult.outputContexts))
 
   Account.findOne({ lastName: acctToSearch }, function (err, acctExists) {
     if (err) {
