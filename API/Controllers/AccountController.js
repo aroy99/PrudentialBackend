@@ -16,7 +16,7 @@ exports.processRequest = function (req, res) {
 };
 
 function getStreet(req, res) {
-  let acctToSearch = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.lastName ? req.body.queryResult.parameters.lastName : 'Unknown';
+  let acctToSearch = req.body.outputContexts && req.body.outputContexts.parameters && req.body.outputContexts.parameters.lastName ? req.body.outputContexts.parameters.lastName : 'Unknown';
   console.log(acctToSearch);
   // var test = Account.findOne({ lastName: "Mann" });
   // console.log("Test: " + test.street);
