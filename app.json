@@ -1,0 +1,8 @@
+{
+    "name": "prudential-backend",
+    "description": "An API that exposes database for lookup",
+    "repository": "https://github.com/aroy99/PrudentialBackend.git",
+    "keywords": [
+        "Prudential"
+    ]
+}
