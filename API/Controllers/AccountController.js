@@ -8,7 +8,7 @@ exports.processRequest = function (req, res) {
   console.log("In function processRequest")
   console.log("%s", JSON.stringify(req.body))
   // console.log("%s", JSON.stringify(req.body["intent]"))
-  if (req.body.intent == "street") {
+  if (req.body.queryResult.action == "GetAddress") {
     console.log("%s", req.body.intent)
     console.log("%s",   req.body.queryResult.queryText);
     getStreet(req, res);
